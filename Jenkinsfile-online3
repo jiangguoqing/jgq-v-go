@@ -1,0 +1,41 @@
+pipeline {
+  agent {
+    kubernetes {
+      label 'hello'
+      yaml """\
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          your-label: some-additional-label
+        spec:
+          containers:
+          - name: maven
+            image: maven:alpine
+            command:
+            - cat
+            tty: true
+          - name: docker
+            image: busybox
+            command:
+            - cat
+            tty: true
+        """.stripIndent()
+    }
+  }
+    stages {
+        stage('Maven') {
+          steps {
+            container('maven') {
+              sh 'mvn -version'
+            }
+          }
+        }
+        stage('Busybox') {
+            steps {
+                container('docker') {
+                    sh '/bin/busybox'
+                }
+            }
+        }
+    }
+}
