@@ -79,7 +79,7 @@ spec:
                 timeout(time:5, unit:"MINUTES"){
                     script{
                         println("check code")
-                        tools.PrintMes("testjgq")
+                        tools.PrintMes("testjgq","red")
                     }
                 }
             }
