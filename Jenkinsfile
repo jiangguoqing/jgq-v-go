@@ -11,9 +11,6 @@ pipeline {
 //            customWorkspace "$workspace"
 //        }
 //    }
-    tools {
-        maven 'maven'
-    }
 
     options {
         timestamps()
@@ -27,7 +24,6 @@ pipeline {
                     script{
                         println("check code")
                         tools.printMes("test")
-
                     }
                 }
             }
