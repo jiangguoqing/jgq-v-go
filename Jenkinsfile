@@ -1,7 +1,7 @@
 @Library('sharedlib')
 
 def tools = new org.devops.tools()
-def docker_build = new org.devops.docker_build()
+
 
 pipeline {
     agent  {
@@ -99,7 +99,7 @@ spec:
             steps {
                 container('docker'){
                  script {
-                    docker_build.Docker_Build()
+                    tools.Docker_Build()
                 }
             }
          }
