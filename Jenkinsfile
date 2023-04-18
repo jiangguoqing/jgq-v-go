@@ -4,7 +4,7 @@ def tools = new org.devops.tools()
 
 
 pipeline {
-    agent any {
+    agent  {
       kubernetes {
         label 'hello'
         yaml '''
