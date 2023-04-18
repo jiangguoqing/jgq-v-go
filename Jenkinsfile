@@ -97,7 +97,6 @@ spec:
 
         stage('Build') {
             steps {
-                timeout(time:5, unit:"MINUTES"){
               container ('docker'){
               sh 'docker build -t 167.71.195.24:30002/myharbor/gojgq-dev-${GIT_BRANCH}-${GIT_SHA:0:7}-$(date +%s):v5 .'
               sh 'docker login 167.71.195.24:30002 -u jgq -p Jgq123456'
@@ -105,7 +104,6 @@ spec:
               sh '''
               echo "you did it!!!!!!!  yes!!"
               '''
-                }
             }
         }
         stage('Test') {
