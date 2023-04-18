@@ -1,13 +1,13 @@
-FROM golang:1.16-alpine
+# syntax=docker/dockerfile:1
+
+FROM eclipse-temurin:17-jdk-jammy
 
 WORKDIR /app
 
-COPY go.mod ./
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:resolve
 
-COPY *.go ./
+COPY src ./src
 
-RUN go build -o /main
-
-EXPOSE 5000
-
-CMD [ "/main"]
+CMD ["./mvnw", "spring-boot:run"]
