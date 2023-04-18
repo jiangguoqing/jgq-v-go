@@ -23,7 +23,7 @@ pipeline {
                 timeout(time:5, unit:"MINUTES"){
                     script{
                         println("check code")
-                        tools.PrintMes("test")
+                        tools.PrintMes("testjgq")
                     }
                 }
             }
