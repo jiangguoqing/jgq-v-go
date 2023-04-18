@@ -67,9 +67,6 @@ spec:
 //            customWorkspace "$workspace"
 //        }
 //    }
-    tools {
-        maven 'maven'
-    }
 
     options {
         timestamps()
@@ -82,8 +79,7 @@ spec:
                 timeout(time:5, unit:"MINUTES"){
                     script{
                         println("check code")
-                        tools.printMes("test")
-
+                        tools.PrintMes("testjgq")
                     }
                 }
             }
