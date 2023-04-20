@@ -63,7 +63,7 @@ spec:
 
 //    agent {
 //        node {
-            label "jenkins"
+//            label "jenkins"
 //            customWorkspace "$workspace"
 //        }
 //    }
