@@ -101,6 +101,7 @@ spec:
                  script {
                     sh "mkdir -p /sys/fs/cgroup/systemd"
                     sh "mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd"
+                    sh "chmod +x ./mvnw"
                     tools.Docker_Build()
                 }
             }
