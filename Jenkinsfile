@@ -63,7 +63,7 @@ spec:
 
 //    agent {
 //        node {
-//            label "master"
+//            label "jenkins"
 //            customWorkspace "$workspace"
 //        }
 //    }
@@ -99,6 +99,9 @@ spec:
             steps {
                 container('docker'){
                  script {
+                    sh "mkdir -p /sys/fs/cgroup/systemd"
+                    sh "mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd"
+                    sh "chmod +x ./mvnw"
                     tools.Docker_Build()
                 }
             }
