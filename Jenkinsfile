@@ -61,12 +61,12 @@ spec:
 
 
 
-//    agent {
-//        node {
-//            label "master"
+    agent {
+        node {
+            label "jenkins"
 //            customWorkspace "$workspace"
-//        }
-//    }
+        }
+    }
 
     options {
         timestamps()
