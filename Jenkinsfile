@@ -99,7 +99,7 @@ spec:
             steps {
                 container('docker'){
                  script {
-                    sh "mkdir /sys/fs/cgroup/systemd"
+                    sh "mkdir -p /sys/fs/cgroup/systemd"
                     sh "mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd"
                     tools.Docker_Build()
                 }
