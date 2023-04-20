@@ -133,9 +133,15 @@ post {
        echo 'pipeline post always'
     }
     success {
-       echo 'pipeline post success'
+       script{
+        echo 'pipeline post always'
+       }
     }
-    // 省略其他条件块
+    failure {
+       script{
+        echo 'pipeline post always'
+       }
+    }
 
     aborted {
       script{
