@@ -82,7 +82,10 @@ spec:
             	echo 'Test dingding notify'
                 script {
                     env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
-                    sh "env.BUILD_URL"
+                    sh "env"
+                    sh "--------------------"
+                    sh "echo $commit"
+                    println(env.commit)
                 }
             }
         }
