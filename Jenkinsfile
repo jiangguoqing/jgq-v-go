@@ -73,20 +73,20 @@ spec:
 //        skip
     }
 
-stages {
-    stage("stage 1: Test dingding notify") {
-        steps {
-        	echo 'Test dingding notify'
-            script {
-                env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
-                sh "env"
-            }
-        }
-    }
-}
-
 
     stages {
+
+
+        stage("stage 1: Test dingding notify") {
+            steps {
+            	echo 'Test dingding notify'
+                script {
+                    env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
+                    sh "env"
+                }
+            }
+        }
+
         stage('GetCode') {
             steps {
                 timeout(time:5, unit:"MINUTES"){
