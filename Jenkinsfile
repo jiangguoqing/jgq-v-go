@@ -73,6 +73,19 @@ spec:
 //        skip
     }
 
+stages {
+    stage("stage 1: Test dingding notify") {
+        steps {
+        	echo 'Test dingding notify'
+            script {
+                env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
+                sh "env"
+            }
+        }
+    }
+}
+
+
     stages {
         stage('GetCode') {
             steps {
@@ -92,6 +105,15 @@ spec:
                         println("check code")
                     }
                 }
+            }
+        }
+
+        stage ('test') {
+            steps {
+                parallel (
+//                    "unit tests": { sh 'mvn test' },
+//                    "integration tests": { sh 'mvn integration-test' }
+                )
             }
         }
 
@@ -142,7 +164,7 @@ post {
     }
     failure {
        script{
-        echo 'pipeline post always'
+            mail to: 'team@example.com', subject: 'Pipeline failed', body: "${env.BUILD_URL}"
        }
     }
 
