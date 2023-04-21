@@ -82,8 +82,9 @@ spec:
             	echo 'Test dingding notify'
                 script {
                     env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
-                    sh "env"
+                    sh "echo $commit"
                     sh "--------------------"
+                    //变量如何使用？
                     sh "echo $commit"
                     println(env.commit)
                 }
