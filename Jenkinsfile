@@ -90,13 +90,41 @@ pipeline {
             }
         }
 
-        stage("Quality Gate"){
-			steps{
-				timeout(time: 15, unit: 'MINUTES') {
-					waitForQualityGate abortPipeline: true
-				}
-			}
-		}
+
+script {
+						Integer waitSeconds = 10
+          				Integer timeOutMinutes = 10
+          				Integer maxRetry = (timeOutMinutes * 60) / waitSeconds as Integer
+                        //  未通过代码检查，中断
+                        for (Integer i = 0; i < maxRetry; i++) {
+				            try {
+				              timeout(time: waitSeconds, unit: 'SECONDS') {
+				              	//利用sonar webhook功能通知pipeline代码检测结果，未通过质量阈，pipeline将会fail
+				                def qg = waitForQualityGate()
+				                echo "${qg.status}"
+				                if (qg.status != 'OK') {
+				                  error "Sonar quality gate status: ${qg.status}"
+				                } else {
+				                  i = maxRetry
+				                }
+				              }
+				            } catch (Throwable e) {
+				              if (i == maxRetry - 1) {
+				                throw e
+				              }
+				            }
+          				}
+                    }
+
+
+//       stage("Quality Gate"){
+//			steps{
+//				timeout(time: 15, unit: 'MINUTES') {
+//					waitForQualityGate abortPipeline: false
+//				}
+//			}
+//		}
+
 
 
         stage("stage 1: Test dingding notify") {
