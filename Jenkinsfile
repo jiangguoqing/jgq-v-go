@@ -82,6 +82,14 @@ pipeline {
     )
   }
 
+   environment {        //设置全局变量
+      username = 'test'
+      password = "123456"
+   }
+   parameters {         //参数化构建
+      choice choices: ['true', 'false'], description: '测试', name: 'test'
+      string name: 'NEW_BRANCH', defaultValue: '', description:'', trim: true
+    }
 
 //    agent {
 //        node {
@@ -109,14 +117,6 @@ pipeline {
     }
 
 
-   environment {        //设置全局变量
-      username = 'test'
-      password = "123456"
-   }
-   parameters {         //参数化构建
-      choice choices: ['true', 'false'], description: '测试', name: 'test'
-      string name: 'NEW_BRANCH', defaultValue: '', description:'', trim: true
-    }
 
 
 
