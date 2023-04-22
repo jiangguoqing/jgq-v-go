@@ -79,6 +79,22 @@ pipeline {
     stages {
 
 
+
+
+
+
+        stage("stage 1: Test dingding notify") {
+            steps {
+            	echo 'Test dingding notify'
+                script {
+                    env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
+                    sh "echo $commit"
+                    //变量如何使用？
+                    println(env.commit)
+                }
+            }
+        }
+
 		stage("build & SonarQube analysis") {
             steps {
                 script {
@@ -97,20 +113,6 @@ pipeline {
 				}
 			}
 		}
-
-
-
-        stage("stage 1: Test dingding notify") {
-            steps {
-            	echo 'Test dingding notify'
-                script {
-                    env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
-                    sh "echo $commit"
-                    //变量如何使用？
-                    println(env.commit)
-                }
-            }
-        }
 
         stage('GetCode') {
             steps {
