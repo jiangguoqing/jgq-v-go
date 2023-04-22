@@ -71,7 +71,7 @@ parameters {
 
 
 
-/*  triggers {
+  triggers {
     GenericTrigger(
      genericVariables: [
       [key: 'ref', value: '$.ref']
@@ -94,7 +94,7 @@ parameters {
     )
   }
 
-*/
+
 
 
 /*   environment {        //设置全局变量
