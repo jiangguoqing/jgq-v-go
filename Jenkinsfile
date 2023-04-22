@@ -89,6 +89,7 @@ pipeline {
                 script {
                     env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
                     sh "echo $commit"
+                    sh "env"
                     //变量如何使用？
                     println(env)
                 }
