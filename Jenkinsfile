@@ -74,7 +74,29 @@ spec:
     }
 
 
+
+
     stages {
+
+
+		stage("build & SonarQube analysis") {
+            steps {
+                script {
+                scannerHome = tool 'sonarscanner'
+                }
+                withSonarQubeEnv('ok') {
+                sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+        }
+
+        stage("Quality Gate"){
+			steps{
+				timeout(time: 15, unit: 'MINUTES') {
+					waitForQualityGate abortPipeline: true
+				}
+			}
+		}
 
 
         stage("stage 1: Test dingding notify") {
@@ -83,9 +105,7 @@ spec:
                 script {
                     env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
                     sh "echo $commit"
-                    sh "--------------------"
                     //变量如何使用？
-                    sh "echo $commit"
                     println(env.commit)
                 }
             }
