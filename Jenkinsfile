@@ -90,7 +90,7 @@ parameters {
      shouldNotFlattern: false,
 
      regexpFilterText: '$ref',
-     regexpFilterExpression: 'refs/heads/' + BRANCH_NAME
+//     regexpFilterExpression: 'refs/heads/' + BRANCH_NAME
     )
   }
 
