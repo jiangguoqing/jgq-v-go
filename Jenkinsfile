@@ -102,10 +102,19 @@ pipeline {
 
 
 
+   environment {        //设置全局变量
+      username = 'test'
+      password = "123456"
+   }
+   parameters {         //参数化构建
+      choice choices: ['true', 'false'], description: '测试', name: 'test'
+      string name: 'NEW_BRANCH', defaultValue: '', description:'', trim: true
+    }
 
 
 
-        stage("stage 1: Test dingding notify") {
+
+/*        stage("stage 1: Test dingding notify") {
             steps {
             	echo 'Test dingding notify'
                 script {
@@ -117,7 +126,7 @@ pipeline {
                 }
             }
         }
-
+*/
 		stage("build & SonarQube analysis") {
             steps {
                 script {
