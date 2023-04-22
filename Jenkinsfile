@@ -103,6 +103,15 @@ parameters {
 
     stages {
 
+       stage("Quality Gate"){
+			steps{
+                script {
+checkout scmGit(branches: [[name: '*/${git branch}']], extensions: [], userRemoteConfigs: [[credentialsId: 'f286958b-d924-4f6e-8720-7a63a2c44717', url: '${repo_url}']])
+                }
+			}
+		}
+
+
         stage('Example') {
             steps {
                 echo "Hello ${params.PERSON}"
