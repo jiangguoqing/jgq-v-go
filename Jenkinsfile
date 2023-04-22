@@ -82,7 +82,7 @@ pipeline {
     )
   }
 
-   environment {        //设置全局变量
+/*   environment {        //设置全局变量
       username = 'test'
       password = "123456"
    }
@@ -90,7 +90,7 @@ pipeline {
       choice choices: ['true', 'false'], description: '测试', name: 'test'
       string name: 'NEW_BRANCH', defaultValue: '', description:'', trim: true
     }
-
+*/
 //    agent {
 //        node {
 //            label "jenkins"
