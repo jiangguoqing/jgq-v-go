@@ -112,7 +112,7 @@ pipeline {
     stage('Some step') {
       steps {
         sh "echo $ref"
-        sh "echo $"
+        sh "echo \$5"
       }
     }
 
