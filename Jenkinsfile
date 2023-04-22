@@ -3,7 +3,6 @@
 def tools = new org.devops.tools()
 
 
-
 pipeline {
     agent  {
       kubernetes {
@@ -34,25 +33,6 @@ pipeline {
          volumeMounts:
          - mountPath: /var/run
            name: cache-dir
-
-       - name: go-lint
-         image: 'golangci/golangci-lint'
-         command: ["/bin/sh"]
-         args: ["-c","while true; do sleep 86400; done"]
-         volumeMounts:
-         - mountPath: /var/run
-           name: cache-dir
-
-
-       - name: trivy
-         image: 'aquasec/trivy:0.21.1'
-         command: ["/bin/sh"]
-         args: ["-c","while true; do sleep 86400; done"]
-         volumeMounts:
-         - mountPath: /var/run
-           name: cache-dir
-
-
        volumes:
        - name: cache-dir
          emptyDir: {}
@@ -126,26 +106,18 @@ parameters {
         stage('Example') {
             steps {
                 echo "Hello ${params.PERSON}"
-
-                echo "Biography: ${params.BIOGRAPHY}"
-
-                echo "Toggle: ${params.TOGGLE}"
-
-                echo "Choice: ${params.CHOICE}"
-
-                echo "Password: ${params.PASSWORD}"
             }
         }
 
 
 
 
-    stage('Some step') {
+/*    stage('Some step') {
       steps {
         sh "echo $ref"
       }
     }
-
+*/
 
 
 
@@ -183,16 +155,6 @@ parameters {
 			}
 		}
 
-        stage('GetCode') {
-            steps {
-                timeout(time:5, unit:"MINUTES"){
-                    script{
-                        println("check code")
-                        tools.PrintMes("testjgq","red")
-                    }
-                }
-            }
-        }
 
         stage('code scan') {
             steps {
