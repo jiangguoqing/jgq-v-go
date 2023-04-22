@@ -71,7 +71,7 @@ parameters {
 
 
 
-  triggers {
+/*  triggers {
     GenericTrigger(
      genericVariables: [
       [key: 'ref', value: '$.ref']
@@ -93,7 +93,7 @@ parameters {
 //     regexpFilterExpression: 'refs/heads/' + BRANCH_NAME
     )
   }
-
+*/
 
 
 
