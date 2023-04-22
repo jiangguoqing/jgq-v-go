@@ -131,11 +131,6 @@ pipeline {
 
     stages {
 
-
-
-
-
-
         stage('Example') {
             steps {
                 echo "Hello ${params.PERSON}"
@@ -156,7 +151,6 @@ pipeline {
     stage('Some step') {
       steps {
         sh "echo $ref"
-        sh "echo \$5"
       }
     }
 
