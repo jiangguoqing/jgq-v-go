@@ -8,53 +8,53 @@ pipeline {
       kubernetes {
         label 'hello'
         yaml '''
-apiVersion: v1
-kind: Pod
-metadata:
-   name: clean-ci
-spec:
-   containers:
-   - name: docker
-     image: 'docker:stable-dind'
-     command:
-     - dockerd
-     - --host=unix:///var/run/docker.sock
-     - --host=tcp://0.0.0.0:8000
-     - --insecure-registry=167.71.195.24:30002
-     securityContext:
-       privileged: true
-     volumeMounts:
-     - mountPath: /var/run
-       name: cache-dir
-   - name: clean-ci
-     image: 'docker:stable'
-     command: ["/bin/sh"]
-     args: ["-c","while true; do sleep 86400; done"]
-     volumeMounts:
-     - mountPath: /var/run
-       name: cache-dir
+    apiVersion: v1
+    kind: Pod
+    metadata:
+       name: clean-ci
+    spec:
+       containers:
+       - name: docker
+         image: 'docker:stable-dind'
+         command:
+         - dockerd
+         - --host=unix:///var/run/docker.sock
+         - --host=tcp://0.0.0.0:8000
+         - --insecure-registry=167.71.195.24:30002
+         securityContext:
+           privileged: true
+         volumeMounts:
+         - mountPath: /var/run
+           name: cache-dir
+       - name: clean-ci
+         image: 'docker:stable'
+         command: ["/bin/sh"]
+         args: ["-c","while true; do sleep 86400; done"]
+         volumeMounts:
+         - mountPath: /var/run
+           name: cache-dir
 
-   - name: go-lint
-     image: 'golangci/golangci-lint'
-     command: ["/bin/sh"]
-     args: ["-c","while true; do sleep 86400; done"]
-     volumeMounts:
-     - mountPath: /var/run
-       name: cache-dir
-
-
-   - name: trivy
-     image: 'aquasec/trivy:0.21.1'
-     command: ["/bin/sh"]
-     args: ["-c","while true; do sleep 86400; done"]
-     volumeMounts:
-     - mountPath: /var/run
-       name: cache-dir
+       - name: go-lint
+         image: 'golangci/golangci-lint'
+         command: ["/bin/sh"]
+         args: ["-c","while true; do sleep 86400; done"]
+         volumeMounts:
+         - mountPath: /var/run
+           name: cache-dir
 
 
-   volumes:
-   - name: cache-dir
-     emptyDir: {}
+       - name: trivy
+         image: 'aquasec/trivy:0.21.1'
+         command: ["/bin/sh"]
+         args: ["-c","while true; do sleep 86400; done"]
+         volumeMounts:
+         - mountPath: /var/run
+           name: cache-dir
+
+
+       volumes:
+       - name: cache-dir
+         emptyDir: {}
         '''.stripIndent()
           }
     }
@@ -84,7 +84,7 @@ spec:
                 script {
                 scannerHome = tool 'sonarscanner'
                 }
-                withSonarQubeEnv('ok') {
+                withSonarQubeEnv('sonarscanner') {
                 sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
