@@ -101,6 +101,12 @@ pipeline {
     stages {
 
 
+    stage('Some step') {
+      steps {
+        sh "echo $ref"
+      }
+    }
+
 
    environment {        //设置全局变量
       username = 'test'
