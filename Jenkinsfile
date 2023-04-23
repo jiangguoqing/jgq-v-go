@@ -57,20 +57,20 @@ parameters {
     }
 
 
-triggers{
+  triggers {
     GenericTrigger(
-        genericVariables: [
-          [key: 'ref', value: '$.ref']
-         ],
-        causeString: 'Triggered on $ref',
-        token: 'jgq-X-go-app',
-        printContributedVariables: true,
-        printPostContent: true,
-        silentResponse: false,
-        regexpFilterText: '$ref',
-        regexpFilterExpression: '^refs/heads/(main/sprint\\d*|master)$'
+     genericVariables: [
+      [key: 'ref', value: '$.ref']
+     ],
+     causeString: 'Triggered on $ref',
+     token: 'abc123',
+     printContributedVariables: true,
+     printPostContent: true,
+     silentResponse: false,
+     regexpFilterText: '$ref',
+     regexpFilterExpression: 'refs/heads/(main/sprint\\d*)'
     )
-}
+  }
 
 
     stages {
