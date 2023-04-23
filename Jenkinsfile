@@ -1,6 +1,7 @@
 @Library('sharedlib')
 
 def tools = new org.devops.tools()
+String url = "${env.repo_url}"
 
 
 pipeline {
@@ -48,7 +49,6 @@ parameters {
   string defaultValue: 'https://github.com/jiangguoqing/jgq-v-go', name: 'repo_url'
 }
 
-String url = "${env.repo_url}"
 
 
 
