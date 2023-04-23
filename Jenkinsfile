@@ -124,8 +124,7 @@ parameters {
      printPostContent: true,
      silentResponse: false,
      regexpFilterText: '$ref',
-//     regexpFilterExpression: 'refs/heads/' + BRANCH_NAME
-     regexpFilterExpression: 'refs/heads/*'
+     regexpFilterExpression: 'refs/heads/' + BRANCH_NAME
     )
   }
 
