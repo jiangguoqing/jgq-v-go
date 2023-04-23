@@ -188,7 +188,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 //            }
 //        }
 
-/*        stage('Build') {
+        stage('Build') {
             steps {
                 container('docker'){
                  script {
@@ -219,7 +219,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
             }
         }
     }
-*/
+
 
 post {
     changed {
@@ -246,4 +246,4 @@ post {
     }
     }
 }
-}
+
