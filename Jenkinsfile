@@ -52,10 +52,10 @@ parameters {
 
 
 
-    triggers {
+/*    triggers {
         GenericTrigger(
             genericVariables: [
-              [key: 'ref', value: '$. ref']
+              [key: 'ref', value: '$.ref']
             ],
             token: 'jgq-X-go-app' ,
             causeString: ' Triggered on $ref' ,
@@ -63,7 +63,7 @@ parameters {
             printPostContent: true
         )
     }
-
+/*
 
 /*  triggers {
     GenericTrigger(
@@ -111,6 +111,29 @@ parameters {
         timestamps()
 //        skip
     }
+
+
+ triggers {
+    GenericTrigger(
+     genericVariables: [
+      [key: 'ref', value: '$.ref']
+     ],
+     causeString: 'Triggered on $ref',
+     token: 'jgq-X-go-app',
+     printContributedVariables: true,
+     printPostContent: true,
+     silentResponse: false,
+     regexpFilterText: '$ref',
+     regexpFilterExpression: 'refs/heads/' + BRANCH_NAME
+    )
+  }
+  stages {
+    stage('Some step') {
+      steps {
+        sh "echo $ref"
+      }
+    }
+  }
 
 
 
