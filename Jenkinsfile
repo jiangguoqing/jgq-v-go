@@ -112,7 +112,7 @@ parameters {
 //        skip
     }
 
-
+/*
  triggers {
     GenericTrigger(
      genericVariables: [
@@ -127,7 +127,7 @@ parameters {
      regexpFilterExpression: '^refs/heads/(main/sprint\\d*|master)$'
     )
   }
-
+*/
 
 
     stages {
