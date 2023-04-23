@@ -127,19 +127,17 @@ parameters {
      regexpFilterExpression: 'refs/heads/' + BRANCH_NAME
     )
   }
-  stages {
-    stage('Some step') {
-      steps {
-        sh "echo $ref"
-      }
-    }
-  }
-
 
 
 
     stages {
 
+
+    stage('Some step') {
+      steps {
+        sh "echo $ref"
+      }
+    }
 /*        stage('GWT env') {
             steps {
                 sh "echo $ref"
