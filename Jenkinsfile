@@ -51,33 +51,10 @@ parameters {
 
 
 
-
-/*    triggers {
-        GenericTrigger(
-            genericVariables: [
-              [key: 'ref', value: '$.ref']
-            ],
-            token: 'jgq-X-go-app' ,
-            causeString: ' Triggered on $ref' ,
-            printContributedVariables: true,
-            printPostContent: true
-        )
+    options {
+        timestamps()
+//        skip
     }
-/*
-triggers{
-    GenericTrigger(
-        genericVariables: [
-          [key: 'ref', value: '$.ref']
-         ],
-        causeString: 'Triggered on $ref',
-        token: 'leangoo-b73b246d4bc9c5c9',
-        printContributedVariables: true,
-        printPostContent: true,
-        silentResponse: false,
-        regexpFilterText: '$ref',
-        regexpFilterExpression: '^refs/heads/(features/sprint\\d*|master)$'
-    )
-}
 
 
 triggers{
@@ -94,80 +71,6 @@ triggers{
         regexpFilterExpression: '^refs/heads/(main/sprint\\d*|master)$'
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-/*  triggers {
-    GenericTrigger(
-     genericVariables: [
-      [key: 'ref', value: '$.ref']
-     ],
-
-     causeString: 'Triggered on $ref',
-
-     token: 'abc123',
-     tokenCredentialId: '',
-
-     printContributedVariables: true,
-     printPostContent: true,
-
-     silentResponse: false,
-
-     shouldNotFlattern: false,
-
-     regexpFilterText: '$ref',
-//     regexpFilterExpression: 'refs/heads/' + BRANCH_NAME
-    )
-  }
-*/
-
-
-
-/*   environment {        //设置全局变量
-      username = 'test'
-      password = "123456"
-   }
-   parameters {         //参数化构建
-      choice choices: ['true', 'false'], description: '测试', name: 'test'
-      string name: 'NEW_BRANCH', defaultValue: '', description:'', trim: true
-    }
-*/
-//    agent {
-//        node {
-//            label "jenkins"
-//            customWorkspace "$workspace"
-//        }
-//    }
-
-    options {
-        timestamps()
-//        skip
-    }
-
-/*
- triggers {
-    GenericTrigger(
-     genericVariables: [
-      [key: 'ref', value: '$.ref']
-     ],
-     causeString: 'Triggered on $ref',
-     token: 'jgq-X-go-app',
-     printContributedVariables: true,
-     printPostContent: true,
-     silentResponse: false,
-     regexpFilterText: '$ref',
-     regexpFilterExpression: '^refs/heads/(main/sprint\\d*|master)$'
-    )
-  }
-*/
 
 
     stages {
