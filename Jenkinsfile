@@ -46,7 +46,7 @@ pipeline {
 //读取不到，怎么读取？默认怎么设定
 parameters {
   string defaultValue: 'https://github.com/jiangguoqing/jgq-v-go', name: 'srcurl'
-//  choice choices: ['main', 'master', 'dev'], name: 'branchname'
+  choice choices: ['main', 'master', 'dev'], name: 'branchname'
 }
 
 
