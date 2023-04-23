@@ -139,10 +139,12 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
             	echo 'Test dingding notify'
                 script {
                     env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
+                    sh "-------------"
+                    sh "echo $branchname"
                     sh "echo $commit"
                     sh "env"
                     //变量如何使用？
-                    println(env)
+
                 }
             }
         }
@@ -186,7 +188,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 //            }
 //        }
 
-        stage('Build') {
+/*        stage('Build') {
             steps {
                 container('docker'){
                  script {
@@ -217,7 +219,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
             }
         }
     }
-
+*/
 
 post {
     changed {
