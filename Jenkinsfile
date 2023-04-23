@@ -134,7 +134,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 
 
 
-/*        stage("stage 1: Test dingding notify") {
+        stage("stage 1: Test dingding notify") {
             steps {
             	echo 'Test dingding notify'
                 script {
@@ -146,8 +146,8 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
                 }
             }
         }
-*/
-		stage("build & SonarQube analysis") {
+
+/*		stage("build & SonarQube analysis") {
             steps {
                 script {
                 scannerHome = tool 'sonarscanner'
@@ -166,7 +166,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 			}
 		}
 
-
+*/
         stage('code scan') {
             steps {
                 timeout(time:5, unit:"MINUTES"){
