@@ -69,7 +69,6 @@ parameters {
      printPostContent: true,
      silentResponse: false,
      regexpFilterText: '$ref',
-     regexpFilterExpression: 'refs/heads/main'
     )
   }
 
