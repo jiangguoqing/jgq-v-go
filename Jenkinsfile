@@ -91,7 +91,7 @@ triggers{
         printPostContent: true,
         silentResponse: false,
         regexpFilterText: '$ref',
-        regexpFilterExpression: '^refs/heads/(features/sprint\\d*|master)$'
+        regexpFilterExpression: '^refs/heads/(main/sprint\\d*|master)$'
     )
 }
 
