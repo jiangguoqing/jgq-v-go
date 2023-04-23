@@ -117,6 +117,14 @@ parameters {
 
     stages {
 
+        stage('GWT env') {
+            steps {
+                sh "echo $ref"
+                sh "printenv"
+            }
+        }
+
+
        stage("pull code"){
 			steps{
                 script {
