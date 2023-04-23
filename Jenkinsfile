@@ -50,6 +50,16 @@ parameters {
 }
 
 
+    triggers {
+        GenericTrigger(
+            genericVariables: [
+              [key: 'ref', value: '$. ref']
+            ],
+            token: 'secret' ,
+            causeString: ' Triggered on $ref' ,
+            printContributedVariables: true,
+            printPostContent: true
+        )
 
 
 /*  triggers {
@@ -103,6 +113,16 @@ parameters {
 
 
     stages {
+
+
+    stages {
+        stage('GWT env') {
+            steps {
+                sh "echo $ref"
+                sh "printenv"
+            }
+        }
+    }
 
        stage("pull code"){
 			steps{
