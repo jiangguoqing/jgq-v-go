@@ -1,8 +1,8 @@
 @Library('sharedlib')
 
 def tools = new org.devops.tools()
-String url = "${env.repo_url}"
-
+String srcurl = "${env.srcurl}"
+String branchname = "${env.branchname}"
 
 pipeline {
     agent  {
@@ -107,7 +107,7 @@ parameters {
        stage("pull code"){
 			steps{
                 script {
-checkout scmGit(branches: [[name: '*/${git branch}']], extensions: [], userRemoteConfigs: [[credentialsId: 'f286958b-d924-4f6e-8720-7a63a2c44717', url: '${url}']])
+checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemoteConfigs: [[credentialsId: 'f286958b-d924-4f6e-8720-7a63a2c44717', url: '${srcurl}']])
                 }
 			}
 		}
