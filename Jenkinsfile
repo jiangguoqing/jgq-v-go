@@ -139,7 +139,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
             	echo 'Test dingding notify'
                 script {
                     env.commit = "${sh(script:'git log --oneline --no-merges|head -1', returnStdout: true)}"
-                    sh "-------------"
+                    sh "echo -------------"
                     sh "echo $branchname"
                     sh "echo $commit"
                     sh "env"
@@ -189,7 +189,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 //        }
 
         stage('Build') {
-            steps {
+    /*        steps {
                 container('docker'){
                  script {
                     sh "mkdir -p /sys/fs/cgroup/systemd"
@@ -200,6 +200,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
             }
          }
         }
+        */
         stage('Test') {
             steps {
                 timeout(time:5, unit:"MINUTES"){
