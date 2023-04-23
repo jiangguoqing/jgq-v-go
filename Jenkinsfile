@@ -57,7 +57,7 @@ parameters {
             genericVariables: [
               [key: 'ref', value: '$. ref']
             ],
-            token: 'secret' ,
+            token: 'jgq-X-go-app' ,
             causeString: ' Triggered on $ref' ,
             printContributedVariables: true,
             printPostContent: true
