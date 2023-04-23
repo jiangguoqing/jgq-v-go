@@ -1,3 +1,4 @@
+
 @Library('sharedlib')
 
 def tools = new org.devops.tools()
@@ -65,22 +66,23 @@ parameters {
      ],
      causeString: 'Triggered on $ref',
      token: 'jgq-X-go-app',
+     regexpFilterExpression: '',
+     regexpFilterText: '',
      printContributedVariables: true,
-     printPostContent: true,
-     silentResponse: false,
-     regexpFilterText: '$ref',
+     printPostContent: true
     )
   }
+
 
     stages {
 
 
-/*    stage('Some step') {
+    stage('Some step') {
       steps {
         sh "echo $ref"
       }
     }
-*/
+
 
 /*        stage('GWT env') {
             steps {
