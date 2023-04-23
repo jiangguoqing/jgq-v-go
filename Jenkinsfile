@@ -135,7 +135,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 
 
 
-        stage("stage 1: Test dingding notify") {
+/*        stage("stage 1: Test dingding notify") {
             steps {
             	echo 'Test dingding notify'
                 script {
@@ -149,6 +149,8 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
                 }
             }
         }
+*/
+
 
 /*		stage("build & SonarQube analysis") {
             steps {
