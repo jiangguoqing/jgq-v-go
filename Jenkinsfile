@@ -63,7 +63,7 @@ parameters {
       [key: 'ref', value: '$.ref']
      ],
      causeString: 'Triggered on $ref',
-     token: 'abc123',
+     token: 'jgq-X-go-app',
      printContributedVariables: true,
      printPostContent: true,
      silentResponse: false,
