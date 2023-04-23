@@ -57,6 +57,7 @@ parameters {
     }
 
 
+
   triggers {
     GenericTrigger(
      genericVariables: [
@@ -68,20 +69,19 @@ parameters {
      printPostContent: true,
      silentResponse: false,
      regexpFilterText: '$ref',
-     regexpFilterExpression: 'refs/heads/(main/sprint\\d*)'
+     regexpFilterExpression: 'refs/heads/main'
     )
   }
-
 
     stages {
 
 
-    stage('Some step') {
+/*    stage('Some step') {
       steps {
         sh "echo $ref"
       }
     }
-
+*/
 
 /*        stage('GWT env') {
             steps {
