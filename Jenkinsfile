@@ -45,8 +45,8 @@ pipeline {
 
 
 parameters {
-  gitParameter branch: '', branchFilter: '.*', defaultValue: 'main', description: 'branch', name: 'git branch', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'GitParameterDefinition'
-  string defaultValue: 'https://github.com/jiangguoqing/jgq-v-go', name: 'repo_url'
+  string defaultValue: 'https://github.com/jiangguoqing/jgq-v-go', name: 'srcurl'
+  choice choices: ['master', 'main', 'dev'], name: 'branchname'
 }
 
 
