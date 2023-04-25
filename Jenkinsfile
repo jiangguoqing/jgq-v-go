@@ -16,6 +16,13 @@ pipeline {
        name: clean-ci
     spec:
        containers:
+       - name: trivy
+         image: 'aquasec/trivy:0.21.1'
+         command: ["/bin/sh"]
+         args: ["-c","while true; do sleep 86400; done"]
+         volumeMounts:
+         - mountPath: /var/run
+           name: cache-dir
        - name: docker
          image: 'docker:stable-dind'
          command:
@@ -195,7 +202,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
         stage('scan with trivy') {
             steps {
                 container ('trivy'){
-                sh "trivy image -f json -o results.json 167.71.195.24:30002/myharbor/gojgq:v3"
+                sh "trivy image -f json -o results.json mrjiangguoqing/gojgq-dev-${GIT_BRANCH}-${GIT_SHA:0:7}-$(date +%s):v5"
                 //recordIssues(tools: [trivy(pattern: 'results.json')])
             }
         }
