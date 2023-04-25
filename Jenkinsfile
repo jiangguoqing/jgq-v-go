@@ -139,7 +139,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 */
 
 
-/*		stage("build & SonarQube analysis") {
+		stage("build & SonarQube analysis") {
             steps {
                 script {
                 scannerHome = tool 'sonarscanner'
@@ -158,7 +158,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 			}
 		}
 
-*/
+
         stage('code scan') {
             steps {
                 timeout(time:5, unit:"MINUTES"){
