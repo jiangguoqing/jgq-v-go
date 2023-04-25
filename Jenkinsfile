@@ -76,13 +76,13 @@ parameters {
 
     stages {
 
-
+/*
     stage('Some step') {
       steps {
         sh "echo $ref"
       }
     }
-
+*/
 
 /*        stage('GWT env') {
             steps {
