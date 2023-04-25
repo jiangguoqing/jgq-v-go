@@ -203,7 +203,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
             steps {
                 container ('trivy'){
                 sh "trivy image -f json -o results.json 167.71.195.24:30002/myharbor/gojgq:v3"
-                //recordIssues(tools: [trivy(pattern: 'results.json')])
+                recordIssues(tools: [trivy(pattern: 'results.json')])
             }
         }
         }
