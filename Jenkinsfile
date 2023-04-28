@@ -207,7 +207,6 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
             }
         }
         }
-
         stage('Test') {
             steps {
                 timeout(time:5, unit:"MINUTES"){
