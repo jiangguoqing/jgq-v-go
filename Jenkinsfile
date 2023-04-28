@@ -11,6 +11,7 @@ branchName = ''
 unixTime = ''
 developmentTag = ''
 releaseTag = ''
+image_name = 'mrjiangguoqing/jgq:1.0'
 
 pipeline {
     agent  {
@@ -62,6 +63,7 @@ pipeline {
 parameters {
   string defaultValue: 'https://github.com/jiangguoqing/jgq-v-go', name: 'srcurl'
   choice choices: ['main', 'master', 'dev'], name: 'branchname'
+
 }
 
 
@@ -232,10 +234,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 
         stage('Test') {
             steps {
-                timeout(time:5, unit:"MINUTES"){
-                    script{
-                        println("check code")
-                    }
+emailext attachmentsPattern: 'results.json', body: 'scann', mimeType: 'text/html', recipientProviders: [buildUser(), culprits(), developers(), requestor()], subject: '', to: 'mrjiangguoqing@gmail.com'
                 }
             }
         }
