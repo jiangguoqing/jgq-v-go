@@ -209,11 +209,11 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
         }
 
 
-
 //
         stage('scan with trivy') {
             steps {
                 container ('trivy'){
+
                 sh "trivy image -f json -o results.json mrjiangguoqing/jgq:1.0"
                 //recordIssues(tools: [trivy(pattern: 'results.json')])
                 publishHTML target : [
