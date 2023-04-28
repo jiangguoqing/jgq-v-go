@@ -202,7 +202,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
                     sh "chmod +x ./mvnw"
                     sh "env"
                     sh "echo ${developmentTag}"
-                    tools.Docker_Build(developmentTag)
+                    //tools.Docker_Build(developmentTag)
                 }
             }
          }
@@ -212,11 +212,12 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
         stage('scan with trivy') {
             steps {
                 container ('trivy'){
-                sh "trivy image -f json -o results.json ${image_name}"
+                sh "trivy image -f json -o results.json ${image}"
                 recordIssues(tools: [trivy(pattern: 'results.json')])
             }
         }
         }
+
         stage('Test') {
             steps {
                 timeout(time:5, unit:"MINUTES"){
