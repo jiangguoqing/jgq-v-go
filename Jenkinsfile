@@ -6,6 +6,12 @@ def tools = new org.devops.tools()
 String srcurl = "${env.srcurl}"
 String branchname = "${env.branchname}"
 
+gitCommit = ''
+branchName = ''
+unixTime = ''
+developmentTag = ''
+releaseTag = ''
+
 pipeline {
     agent  {
       kubernetes {
@@ -187,6 +193,10 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
             steps {
                 container('docker'){
                  script {
+                    gitCommit = env.GIT_COMMIT.substring(0,8)
+                    branchName = env.BRANCH_NAME
+                    unixTime = (new Date().time.intdiv(1000))
+                    developmentTag = "${branchName}-${gitCommit}-${unixTime}"
                     sh "mkdir -p /sys/fs/cgroup/systemd"
                     sh "mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd"
                     sh "chmod +x ./mvnw"
