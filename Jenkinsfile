@@ -237,7 +237,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 emailext attachmentsPattern: 'results.json', body: 'scann', mimeType: 'text/html', recipientProviders: [buildUser(), culprits(), developers(), requestor()], subject: '', to: 'mrjiangguoqing@gmail.com'
                 }
             }
-        }
+
         stage('Deploy') {
             steps {
                 timeout(time:5, unit:"MINUTES"){
@@ -274,5 +274,5 @@ post {
       }
     }
     }
-
+}
 
