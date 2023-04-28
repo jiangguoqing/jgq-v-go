@@ -145,7 +145,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
         }
 */
 
-
+/*
 		stage("build & SonarQube analysis") {
             steps {
                 script {
@@ -165,7 +165,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 			}
 		}
 
-
+*/
         stage('code scan') {
             steps {
                 timeout(time:5, unit:"MINUTES"){
@@ -199,10 +199,11 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
         }
 
 
+//
         stage('scan with trivy') {
             steps {
                 container ('trivy'){
-                sh "trivy image -f json -o results.json 167.71.195.24:30002/myharbor/gojgq:v3"
+                sh "trivy image -f json -o results.json ${image_name}"
                 recordIssues(tools: [trivy(pattern: 'results.json')])
             }
         }
