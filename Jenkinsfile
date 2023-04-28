@@ -201,7 +201,6 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
                     sh "mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd"
                     sh "chmod +x ./mvnw"
                     sh "env"
-
                     tools.Docker_Build(developmentTag)
                 }
             }
