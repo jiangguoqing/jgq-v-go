@@ -215,7 +215,16 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
             steps {
                 container ('trivy'){
                 sh "trivy image -f json -o results.json mrjiangguoqing/jgq:1.0"
-                recordIssues(tools: [trivy(pattern: 'results.json')])
+                //recordIssues(tools: [trivy(pattern: 'results.json')])
+                publishHTML target : [
+                    allowMissing: true,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'reports',
+                    reportFiles: 'results.json',
+                    reportName: 'Trivy Scan',
+                    reportTitles: 'Trivy Scan'
+                ]
             }
         }
         }
