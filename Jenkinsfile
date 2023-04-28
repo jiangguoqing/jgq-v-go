@@ -196,7 +196,6 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
          }
         }
 
-
 //
         stage('scan with trivy') {
             steps {
