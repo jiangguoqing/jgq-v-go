@@ -128,8 +128,6 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
 
 
 
-
-
 /*        stage("stage 1: Test dingding notify") {
             steps {
             	echo 'Test dingding notify'
