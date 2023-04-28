@@ -194,7 +194,7 @@ checkout scmGit(branches: [[name: '*/${branchname}']], extensions: [], userRemot
                 container('docker'){
                  script {
                     gitCommit = env.GIT_COMMIT.substring(0,8)
-                    branchName = env.BRANCH_NAME
+                    branchName = env.branchname
                     unixTime = (new Date().time.intdiv(1000))
                     developmentTag = "${branchName}-${gitCommit}-${unixTime}"
                     sh "mkdir -p /sys/fs/cgroup/systemd"
